@@ -27,13 +27,21 @@ GMC-3xx (GMC-300, GMC-320) is a hand held geiger counter. Is is build around a M
 The program is  written in Python 2.7
 Python Data retrieval and serial calls referenced from GMC-3xx Datalogger (see references)
 May work with other GMC models, only tested on gmc-320+
+
 CLI output is:
+
      03/11/2018 07:30:00 24 (Peak:32) -Time
+     
      22.6c - 63.64f -Temp in C and F
+     
      23 chars written to logs/gmc_20180311_cpm.csv   -CSV output files CPM
+     
      31 chars written to logs/gmc_20180311_temp.csv  -CSV output files Temperature
+     
      1959 chars written to index.html                -Bar graph html output file html
+     
      4513 chars written to gauges.html               -Gauge graph output file html
+     
 
 
 ## Installation
@@ -46,20 +54,28 @@ Requirements:
 * time
 * os
 * serial   
- 
-(Unzip) Save files below in a directory and start:
+
+You may need to change the USB port, baud for your unit.
+This can be done on line 10 of the script 
+device,baud rate, timeout.
+line 10: gmc= serial.Serial('/dev/ttyUSB0', 115200, timeout= 3)
+
+(Unzip) or save files below in a directory and start:
 In terminal session in that directory run:
     $ python quickcpm.py 60
 Where 60 is optional time per second you want it to loop the connection.
 Default is 300 which is 5 minutes
 
+Forum URL:
 [247Coding.com] (http://247coding.com/drupal/?q=quickCPM)
     
 Files:
+Requires
 * quickcpm.py    # main python program
 * /logs           # directory where csv logs are saved
 * gauge.min.js    # gauge builder referenced in html script reference.
-https://canvas-gauges.com/
+
+https://canvas-gauges.com/ - for more gauge scripts and instructions on changing options.
 
 ## License
 
