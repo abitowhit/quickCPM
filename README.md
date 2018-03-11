@@ -88,17 +88,10 @@ Your mileage may very.
 Four solutions:
 
 * Output to terminal.
-* You may use the software only for accessing memory data and waive the live data option.
-* You may use the CLI version (without live data option).
-* You may use the _Complete GUI Python Script_, see references.
-
+* Output to CSV for CPM and Temperature
+* Output to local HTML files for gauge and bar views with link button to switch.
 
 ## References:
- * [gqmc](https://sourceforge.net/projects/gqgmc/files/gqgmc/): C-program, ICD and other documentations
- * [ullix](https://sourceforge.net/projects/geigerlog/) Basic I/O Python routines
- * [GQelectronics GMC Manual](https://www.gqelectronicsllc.com/comersus/store/download.asp)
- * [GQelectronics GMC Forum](https://www.gqelectronicsllc.com/forum/forum.asp?FORUM_ID=14)
- * [Complete GUI Python script by Ullix](https://sourceforge.net/projects/geigerlog/)
  * [Canvas Gauges](https://canvas-gauges.com/documentation/user-guide/ )
  * [247Coding.com] (https://247coding.com/drupal/?q=quickCPM) Site Link
 
