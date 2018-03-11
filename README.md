@@ -92,7 +92,8 @@ Four solutions:
 * Output to local HTML files for gauge and bar views with link button to switch.
 
 ## References:
+ * [GMC Data Logger](https://github.com/Dibal/gmc_datalogger) Reference for hex-string conversion.
  * [Canvas Gauges](https://canvas-gauges.com/documentation/user-guide/ )
- * [247Coding.com] (https://247coding.com/drupal/?q=quickCPM) Site Link
+ * [247Coding.com](https://247coding.com/drupal/?q=quickCPM) Site Link
 
 
