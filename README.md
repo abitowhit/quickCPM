@@ -1,5 +1,6 @@
 # quickCPM
 GMC-320 Radiation Detector Python Utility
+![quickCPM](headless.png)
 
 ## Overview
 Stand-Alone, Non-GUI Single python script which reads the CPM data from a Geiger-Counter GMC-3xx (_GQelectronics_) via USB.
