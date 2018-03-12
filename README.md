@@ -1,6 +1,6 @@
 # quickCPM
 GMC-320 Radiation Detector Python Utility
-
+* [247Coding.com](https://247coding.com/drupal/?q=quickCPM) Application Site Link
 ![quickCPM](https://github.com/abitowhit/quickCPM/blob/master/quickcpmMonitor.png)
 
 ## Overview
@@ -85,15 +85,15 @@ GNU General Public License version 3.0 (GPLv3) (https://www.gnu.org/licenses/gpl
 Script is written without much exception validation due to time constraints.
 Your mileage may very.
 
-Four solutions:
+## Solutions:
 
-* Output to terminal.
-* Output to CSV for CPM and Temperature
+* Output CPM/Temp data to terminal.
+* Output CPM/Temp data to CSV.
 * Output to local HTML files for gauge and bar views with link button to switch.
 
 ## References:
  * [GMC Data Logger](https://github.com/Dibal/gmc_datalogger) Reference for hex-string conversion.
- * [Canvas Gauges](https://canvas-gauges.com/documentation/user-guide/ )
- * [247Coding.com](https://247coding.com/drupal/?q=quickCPM) Site Link
+ * [Canvas Gauges](https://canvas-gauges.com/documentation/user-guide/ ) Download/Link for gauge js
+ * [247Coding.com](https://247coding.com/drupal/?q=quickCPM) Application Site Link
 
 
