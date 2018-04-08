@@ -8,6 +8,7 @@ Stand-Alone, Non-GUI Single python script which reads the CPM data from a Geiger
 Stores CPM and Temperature into (per day) csv log file for analysis. (stamp,value)  
 Creates a bar graph and gauge html file for viewing current status in a browser.
 Written as a simple interface on Raspberry Pi to be included in home monitoring.
+New: 2018Mar08 - Added FTP (ftplib) capability to upload gauge and bar html files to a web server.
 
 ## Device
 
