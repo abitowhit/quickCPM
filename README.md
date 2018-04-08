@@ -1,6 +1,7 @@
 # quickCPM
 GMC-320 Radiation Detector Python Utility
 * [247Coding.com](https://247coding.com/drupal/?q=quickCPM) Application Site Link
+* [http://247coding.com/drupal/?q=forum/46](https://247coding.com/drupal/?q=forum/46)Application Forum Link
 ![quickCPM](https://github.com/abitowhit/quickCPM/blob/master/quickcpmMonitor.png)
 
 ## Overview
