@@ -6,12 +6,37 @@ import datetime
 import time
 import serial
 import sys
+import ftplib
 
 gmc= serial.Serial('/dev/ttyUSB0', 115200, timeout= 3) #device
 peak=0 #initial peak
 slp=300 #interval 5min
 gaugeType="radial"
-pageBanner="Home Monitor";
+pageBanner="Home Monitor - <span style=\"font-size:x-small\">Updated:{0}</span>".format("{:%m/%d/%Y %H:%M:%S}".format(datetime.datetime.now()));
+ftpLp=0
+ftpLimit=10
+workDir = r"/home/pi/bin/quickcpm" #set location of quickCPM.py
+ftpPath = r"/"
+ftpU="ftpusername" #set ftp username
+ftpP="ftppassword" #set ftp password
+ftpHost="ftphostname" #set ftp host
+ftpOn=true #use ftp
+
+def ftpQCPM():
+    if (ftpOn):
+        try:
+            cwd = os.getcwd()
+            ftp = ftplib.FTP(ftpHost)
+            ftp.login(ftpU, ftpP)
+            ftp.cwd(ftpPath)
+            if(cwd != workDir):
+                os.chdir(workDir)
+            ftp.storlines("STOR " + "QCPMgauge.html", open("QCPMgauge.html",'rb',1024))
+            ftp.storlines("STOR " + "QCPMbar.html", open("QCPMbar.html",'rb',1024))
+            print("[ftp ok]")
+        except:
+            print("....ftp failed")
+#ftp.storlines("STOR " + "gauge.min.js", open("gauge.min.js",'rb',1024))
 
 def gaugeCPMScrpt(id,value,title,unit):
     ghpg = "\n\n<canvas id=\"gauge-ps{0}\"></canvas>\n".format(id)
@@ -266,7 +291,7 @@ def getWebPage(tval,cval,curCPM,peak):
     hpg += "<div class=\"_PR\" style=\"width:45%;float:left;background-color:#000000;color:#37bc2d\">Temp:<br><TMP></div>"
     hpg += "<div class=\"_PR\" style=\"width:45%;float:left;background-color:#000000;color:#37bc2d\"><CPM></div>"
     #hpg += cpmGauge(curCPM,peak)
-    hpg += "<div style=\"width:100%;float:left\"><a href=gauges.html class=\"_PR\" style=\"text-decoration:none;text-align:center;width:96%;background-color:silver;color:#333;float:left;border-radius:20;padding:4px\"\">Gauge</a></div>"
+    hpg += "<div style=\"width:100%;float:left\"><a href=QCPMgauge.html class=\"_PR\" style=\"text-decoration:none;text-align:center;width:96%;background-color:silver;color:#333;float:left;border-radius:20;padding:4px\"\">Gauge</a></div>"
     hpg += "</div>"
     hpg += "</div></body></html>"
     #hpg += "</div></div></body></html>"
@@ -287,7 +312,7 @@ def getGaugePage(tval,cval,curCPM,peak,curF,curC):
     #scripted html page
     hpg += gaugeCPMScrpt("cpm",curCPM,"CPM","Peak CPM {0}".format(peak)) #id,value,title,unit
     hpg += gaugeTempScrpt("tmp",curF,"Temp","{0}c".format(curC)) #id,value,title,unit
-    hpg += "<div style=\"width:100%;float:left\"><a href=index.html class=\"_PR\" style=\"text-decoration:none;text-align:center;width:96%;background-color:silver;color:#333;float:left;border-radius:20;padding:4px\">Bar</a></div>"
+    hpg += "<div style=\"width:100%;float:left\"><a href=QCPMbar.html class=\"_PR\" style=\"text-decoration:none;text-align:center;width:96%;background-color:silver;color:#333;float:left;border-radius:20;padding:4px\">Bar</a></div>"
     hpg += "</div>"
     hpg += "<div></body></html>"
     return parsepage(tval,cval,hpg)
@@ -396,8 +421,14 @@ try:
         cpmH += pkH
         writeToFile(getFName("cpm"),cpm,0,0)
         writeToFile(getFName("temp"),tCSV,0,0)
-        writeToFile("index.html",getWebPage(tempH,cpmH,currentCPM,peak),0,1)
-        writeToFile("gauges.html",getGaugePage(tempH,cpmH,currentCPM,peak,tF,tCel),0,1)
+        writeToFile("QCPMbar.html",getWebPage(tempH,cpmH,currentCPM,peak),0,1)
+        writeToFile("QCPMgauge.html",getGaugePage(tempH,cpmH,currentCPM,peak,tF,tCel),0,1)
+        if (ftpLp == 0):
+            ftpQCPM()
+        if (ftpLp >= ftpLimit):
+            ftpLp=1
+            ftpQCPM()
+        ftpLp += 1
         time.sleep(slp) 
 except KeyboardInterrupt:
     pass
